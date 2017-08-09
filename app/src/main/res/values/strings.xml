@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">OTApp</string>
+    <string name="ok">Tamamdır</string>
+    <string name="dialog_title">Başlık</string>
+    <string name="dialog_message">Mesaj</string>
+    <string name="cancel">İptal</string>
+
+</resources>
