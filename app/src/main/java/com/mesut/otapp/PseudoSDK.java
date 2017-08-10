@@ -37,9 +37,4 @@ public class PseudoSDK {
             return -1;
         }
     }
-
-    File file = new File("version.txt");
-    file.
-
-
 }
