@@ -1,9 +1,5 @@
 package com.mesut.otapp;
 
-import android.content.Context;
-
-import java.io.File;
-
 
 public class PseudoSDK {
     // data member private yapılacak ve getter setter method yazılacak
@@ -15,21 +11,21 @@ public class PseudoSDK {
         progress = i;
     }
 
-    public static int LOCAL_VERSION = 4;
+    public static int LOCAL_VERSION = 3;
+    public static int SERVER_VERSION;
+    public static boolean forced = false;
 
     public static boolean progress(int randomInt, int progress){
         return !(randomInt == progress);
     }
 
     public static int check_for_update(){
-        int SERVER_VERSION = 5;
-        boolean SV_forced = false;
         // Update Version to
         if (SERVER_VERSION > LOCAL_VERSION){
             return SERVER_VERSION;
         }
         // Forced Update
-        else if(SV_forced){
+        else if(forced){
             return 0;
         }
         // No update

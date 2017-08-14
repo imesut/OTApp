@@ -8,12 +8,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class Management extends AppCompatActivity {
     // Define of Visual Items
     Button updateButton;
     TextView updateInfoText;
+    ImageButton preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,10 +56,18 @@ public class Management extends AppCompatActivity {
         }
     }
 
-    //Activity Pass Function
+    //Activity Go To Function
     public void goToUpdate(View view) {
         Intent intent = new Intent(this, Update.class);
         startActivity(intent);
+        finish();
+    }
+
+    //Activity Go To Function
+    public void goToSimulation(View view) {
+        Intent intent = new Intent(this, Simulation.class);
+        startActivity(intent);
+        finish();
     }
 }
 

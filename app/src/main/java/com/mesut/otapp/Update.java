@@ -33,6 +33,7 @@ public class Update extends AppCompatActivity {
         builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 Intent intent = new Intent(Update.this, Management.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
                 finish();
@@ -60,7 +61,7 @@ public class Update extends AppCompatActivity {
 
                             final PseudoSDK anObj = new PseudoSDK(0);
                             while (!isInterrupted() && anObj.progress <= randomBreakpoint) {
-                                Thread.sleep(50);
+                                Thread.sleep(25);
                                 runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
@@ -73,7 +74,7 @@ public class Update extends AppCompatActivity {
                                                 progressPercentage.setText("Başarıyla iletildi");
                                                 dialog.setMessage("Güncelleme Tamamlandı.");
                                                 dialog.show();
-                                                PseudoSDK.LOCAL_VERSION = 10;
+                                                PseudoSDK.LOCAL_VERSION = PseudoSDK.SERVER_VERSION;
                                             }
                                             else{
                                                 progressPercentage.setText("%"+anObj.progress+" Hata: "+String.valueOf(error));

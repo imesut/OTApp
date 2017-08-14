@@ -78,4 +78,16 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:text="WeWALK'um Nerede?" />
+
+    <ImageButton
+        android:id="@+id/preferences"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/updateButton"
+        android:layout_marginLeft="22dp"
+        android:layout_marginStart="22dp"
+        android:onClick="goToSimulation"
+        app:srcCompat="@android:drawable/ic_menu_manage" />
 </android.widget.RelativeLayout>

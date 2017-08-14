@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/connectedText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="49dp"
+        android:layout_marginStart="49dp"
+        android:layout_marginTop="49dp"
+        android:text="WeWALK connected?"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Switch
+        android:id="@+id/connected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="46dp"
+        android:layout_marginRight="46dp"
+        android:layout_alignBottom="@+id/connectedText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/serverVersionText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="SERVER_VERSION"
+        android:layout_below="@+id/connectedText"
+        android:layout_alignLeft="@+id/connectedText"
+        android:layout_alignStart="@+id/connectedText" />
+
+    <EditText
+        android:id="@+id/serverVersion"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/serverVersionText"
+        android:layout_alignBottom="@+id/serverVersionText"
+        android:layout_alignEnd="@+id/connected"
+        android:layout_alignRight="@+id/connected"
+        android:ems="10"
+        android:inputType="numberSigned"
+        android:text="5" />
+
+    <TextView
+        android:id="@+id/forcedText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="SERVER_VERSION forced?"
+        android:layout_below="@+id/serverVersionText"
+        android:layout_alignLeft="@+id/serverVersionText"
+        android:layout_alignStart="@+id/serverVersionText" />
+
+    <Switch
+        android:id="@+id/forced"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/forcedText"
+        android:layout_alignEnd="@+id/serverVersion"
+        android:layout_alignRight="@+id/serverVersion" />
+
+    <TextView
+        android:id="@+id/timeoutPrbText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Timeout Probability %"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/forcedText"
+        android:layout_alignStart="@+id/forcedText" />
+
+    <EditText
+        android:id="@+id/timeoutPrb"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/hashPrbText"
+        android:layout_alignEnd="@+id/forced"
+        android:layout_alignRight="@+id/forced"
+        android:ems="10"
+        android:inputType="numberSigned"
+        android:text="5" />
+
+    <TextView
+        android:id="@+id/hashPrbText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hash Unmatch Probability %"
+        android:layout_marginTop="35dp"
+        android:layout_below="@+id/timeoutPrbText"
+        android:layout_alignLeft="@+id/timeoutPrbText"
+        android:layout_alignStart="@+id/timeoutPrbText" />
+
+    <EditText
+        android:id="@+id/hashPrb"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/reconnectPrbText"
+        android:layout_alignLeft="@+id/timeoutPrb"
+        android:layout_alignStart="@+id/timeoutPrb"
+        android:ems="10"
+        android:inputType="numberSigned"
+        android:text="5" />
+
+    <TextView
+        android:id="@+id/reconnectPrbText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reconnect Fail Probability %"
+        android:layout_marginTop="35dp"
+        android:layout_below="@+id/hashPrbText"
+        android:layout_alignLeft="@+id/hashPrbText"
+        android:layout_alignStart="@+id/hashPrbText" />
+
+    <EditText
+        android:id="@+id/reconnect"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/reconnectPrbText"
+        android:layout_alignLeft="@+id/hashPrb"
+        android:layout_alignStart="@+id/hashPrb"
+        android:ems="10"
+        android:inputType="numberSigned"
+        android:text="5" />
+
+    <TextView
+        android:id="@+id/updateFailPrbText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update Fail Probability %"
+        android:layout_marginTop="35dp"
+        android:layout_below="@+id/reconnectPrbText"
+        android:layout_alignLeft="@+id/reconnectPrbText"
+        android:layout_alignStart="@+id/reconnectPrbText" />
+
+    <EditText
+        android:id="@+id/updateFailPrb"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:text="5"
+        android:inputType="numberSigned"
+        android:layout_alignBottom="@+id/updateFailPrbText"
+        android:layout_alignLeft="@+id/reconnect"
+        android:layout_alignStart="@+id/reconnect" />
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/hashPrbText"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/hashPrbText"
+        android:layout_marginBottom="9dp"
+        android:text="ONAYLA" />
+
+</RelativeLayout>
