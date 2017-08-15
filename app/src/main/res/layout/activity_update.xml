@@ -47,13 +47,4 @@
         android:layout_marginTop="17dp"
         app:srcCompat="@drawable/wewalklogo" />
 
-    <Button
-        android:id="@+id/temp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/tips"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="50dp"
-        android:text="TEMP" />
-
 </android.widget.RelativeLayout>

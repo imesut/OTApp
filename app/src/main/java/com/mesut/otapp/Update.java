@@ -2,7 +2,6 @@ package com.mesut.otapp;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.SystemClock;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,7 +12,19 @@ import android.widget.TextView;
 import java.util.concurrent.TimeUnit;
 
 public class Update extends AppCompatActivity {
+    int i = 1;
+    boolean phase = true;
     public boolean stop = false;
+
+    public int update_wait(int i){
+        int sleep = 500;
+        return sleep;
+    }
+
+    public void update_step(int i){
+        //If logics
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,8 +34,9 @@ public class Update extends AppCompatActivity {
 
         TextView tips = (TextView)findViewById(R.id.tips);
         final TextView progressPercentage = (TextView)findViewById(R.id.progressPercentage);
-        TextView stepInfo = (TextView)findViewById(R.id.stepInfo);
-        Button temp = (Button)findViewById(R.id.temp);
+        final TextView stepInfo = (TextView)findViewById(R.id.stepInfo);
+
+
 
         //Dialog Box
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -44,59 +56,107 @@ public class Update extends AppCompatActivity {
 
         final AlertDialog dialog = builder.create();
 
-
         //Dummy Progress
-        temp.setOnClickListener(new View.OnClickListener() {
+        int rb = 100;
+        int err = 0;
+        if (Math.random() > 0.95) {
+            rb = (int) (100 * Math.random());
+            err = (int)(5*Math.random())+1;
+        }
+        final int randomBreakpoint = rb;
+        final int error = err;
+        final Thread t = new Thread() {
             @Override
-            public void onClick(View view) {
-                int rb = 100;
-                int err = 0;
-                if (Math.random() > 0.95) {
-                    rb = (int) (100 * Math.random());
-                    err = (int)(5*Math.random())+1;
-                }
-                final int randomBreakpoint = rb;
-                final int error = err;
-                final Thread t = new Thread() {
-                    @Override
-                    public void run() {
-                        try {
-                            final PseudoSDK anObj = new PseudoSDK(0);
-
-                            while (!Thread.currentThread().isInterrupted() && anObj.progress <= randomBreakpoint) {
-                                Log.d("thread", "Interrupt: " + String.valueOf(Thread.currentThread().isInterrupted()));
-                                Thread.sleep(25);
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        if(PseudoSDK.progress(randomBreakpoint,anObj.progress)){
-                                            progressPercentage.setText("%"+String.valueOf(anObj.progress));
-                                            anObj.progress++;
-                                        }
-                                        else {
-                                            if (error == 0){
-                                                progressPercentage.setText("Başarıyla iletildi");
-                                                dialog.setMessage("Güncelleme Tamamlandı.");
-                                                dialog.show();
-                                                PseudoSDK.LOCAL_VERSION = PseudoSDK.SERVER_VERSION;
-                                                stop = true;
-                                            }
-                                            else{
-                                                progressPercentage.setText("%"+anObj.progress+" Hata: "+String.valueOf(error));
-                                            }
-                                        }
+            public void run() {
+                try {
+                    final PseudoSDK anObj = new PseudoSDK(0);
+                    while (!Thread.currentThread().isInterrupted() && anObj.progress <= randomBreakpoint) {
+                        Thread.sleep(50);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                if(PseudoSDK.progress(randomBreakpoint,anObj.progress)){
+                                    progressPercentage.setText("%"+String.valueOf(anObj.progress));
+                                    anObj.progress++;
+                                }
+                                else {
+                                    if (error == 0){
+                                        progressPercentage.setText("Başarıyla iletildi");
+                                        dialog.setMessage("Güncelleme Tamamlandı.");
+                                        dialog.show();
+                                        PseudoSDK.LOCAL_VERSION = PseudoSDK.SERVER_VERSION;
+                                        stop = true;
                                     }
-                                });
-                                if (stop){
-                                    break;
+                                    else{
+                                        progressPercentage.setText("%"+anObj.progress+" Hata: "+String.valueOf(error));
+                                    }
                                 }
                             }
-                        } catch (InterruptedException e) {
+                        });
+                        if (stop){
+                            break;
                         }
                     }
-                };
-                t.start();
+                } catch (InterruptedException e) {
+                }
             }
-        });
+        };
+
+        final Thread main_update = new Thread() {
+            @Override
+            public void run() {
+                try {
+                    while (phase) {
+                        Thread.sleep(0);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                //Download update
+                                stepInfo.setText(R.string.updateState1);
+                                Log.d("status", "yazı1");
+                                //Wait for download
+                                try {
+                                    Thread.sleep(800);
+                                }catch (InterruptedException e){}
+                                //show hash check message
+                                Log.d("status", "sleep1");
+                                stepInfo.setText(R.string.updateState2);
+                                Log.d("status", "yazı2");
+                                //Wait for hash check
+                                try {
+                                    Thread.sleep(400);
+                                }catch (InterruptedException e){}
+                                Log.d("status", "sleep2");
+                                //Check fail message
+                                int rnd = (int)(100 * Math.random());
+                                if (rnd < PseudoSDK.hashPrb){
+                                    stepInfo.setText(R.string.updateState3fail);
+                                }
+                                //Check success message
+                                else{
+                                    Log.d("status", "check");
+                                    stepInfo.setText(R.string.updateState3);
+                                    Log.d("status", "yazı3");
+                                    try {
+                                        Thread.sleep(200);
+                                    }catch (InterruptedException e){}
+                                    Log.d("status", "sleep3");
+                                    //Start Transmission
+                                    stepInfo.setText(R.string.updateState4);
+                                    Log.d("status", "yazı4");
+                                    t.start();
+                                    Log.d("status", "update başlangıcı");
+                                }
+                                phase = false;
+                                Log.d("scenario", "rnd: " + String.valueOf(rnd) + " hashPrb: " + String.valueOf(PseudoSDK.hashPrb) + String.valueOf(phase));
+                            }
+                        });
+                        break;
+                    }
+                } catch (InterruptedException e) {
+                }
+            }
+        };
+        main_update.start();
     }
 }

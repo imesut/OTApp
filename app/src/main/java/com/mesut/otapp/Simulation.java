@@ -17,15 +17,19 @@ public class Simulation extends AppCompatActivity {
         final Switch connected = (Switch)findViewById(R.id.connected);
         final Switch forced = (Switch)findViewById(R.id.forced);
         final EditText serverVersion = (EditText)findViewById(R.id.serverVersion);
-        EditText timeoutPrb = (EditText)findViewById(R.id.timeoutPrb);
-        EditText hashPrb = (EditText)findViewById(R.id.hashPrb);
-        EditText reconnect = (EditText)findViewById(R.id.reconnect);
-        EditText updateFailPrb = (EditText)findViewById(R.id.updateFailPrb);
+        final EditText timeoutPrb = (EditText)findViewById(R.id.timeoutPrb);
+        final EditText hashPrb = (EditText)findViewById(R.id.hashPrb);
+        final EditText reconnect = (EditText)findViewById(R.id.reconnect);
+        final EditText updateFailPrb = (EditText)findViewById(R.id.updateFailPrb);
         Button submit = (Button)findViewById(R.id.submit);
 
-        serverVersion.setText(String.valueOf(PseudoSDK.SERVER_VERSION));
         forced.setChecked(PseudoSDK.forced);
         connected.setChecked(PseudoSDK.connected);
+        serverVersion.setText(String.valueOf(PseudoSDK.SERVER_VERSION));
+        timeoutPrb.setText(String.valueOf(PseudoSDK.timeoutPrb));
+        hashPrb.setText(String.valueOf(PseudoSDK.hashPrb));
+        reconnect.setText(String.valueOf(PseudoSDK.reconnect));
+        updateFailPrb.setText(String.valueOf(PseudoSDK.updateFailPrb));
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,6 +37,10 @@ public class Simulation extends AppCompatActivity {
                 PseudoSDK.forced = forced.isChecked();
                 PseudoSDK.connected = connected.isChecked();
                 PseudoSDK.SERVER_VERSION = Integer.parseInt(serverVersion.getText().toString());
+                PseudoSDK.timeoutPrb = Integer.parseInt(timeoutPrb.getText().toString());
+                PseudoSDK.hashPrb = Integer.parseInt(hashPrb.getText().toString());
+                PseudoSDK.reconnect = Integer.parseInt(reconnect.getText().toString());
+                PseudoSDK.updateFailPrb = Integer.parseInt(updateFailPrb.getText().toString());
                 Intent intent = new Intent(Simulation.this, Management.class);
                 startActivity(intent);
                 finish();
