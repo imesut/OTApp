@@ -6,13 +6,14 @@ import android.os.SystemClock;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import java.util.concurrent.TimeUnit;
 
 public class Update extends AppCompatActivity {
-
+    public boolean stop = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +33,7 @@ public class Update extends AppCompatActivity {
         //Dialog Box - Return to Management Activity Button
         builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
+                Thread.currentThread().interrupt();
                 Intent intent = new Intent(Update.this, Management.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
@@ -41,6 +43,7 @@ public class Update extends AppCompatActivity {
         });
 
         final AlertDialog dialog = builder.create();
+
 
         //Dummy Progress
         temp.setOnClickListener(new View.OnClickListener() {
@@ -54,13 +57,14 @@ public class Update extends AppCompatActivity {
                 }
                 final int randomBreakpoint = rb;
                 final int error = err;
-                Thread t = new Thread() {
+                final Thread t = new Thread() {
                     @Override
                     public void run() {
                         try {
-
                             final PseudoSDK anObj = new PseudoSDK(0);
-                            while (!isInterrupted() && anObj.progress <= randomBreakpoint) {
+
+                            while (!Thread.currentThread().isInterrupted() && anObj.progress <= randomBreakpoint) {
+                                Log.d("thread", "Interrupt: " + String.valueOf(Thread.currentThread().isInterrupted()));
                                 Thread.sleep(25);
                                 runOnUiThread(new Runnable() {
                                     @Override
@@ -75,6 +79,7 @@ public class Update extends AppCompatActivity {
                                                 dialog.setMessage("Güncelleme Tamamlandı.");
                                                 dialog.show();
                                                 PseudoSDK.LOCAL_VERSION = PseudoSDK.SERVER_VERSION;
+                                                stop = true;
                                             }
                                             else{
                                                 progressPercentage.setText("%"+anObj.progress+" Hata: "+String.valueOf(error));
@@ -82,6 +87,9 @@ public class Update extends AppCompatActivity {
                                         }
                                     }
                                 });
+                                if (stop){
+                                    break;
+                                }
                             }
                         } catch (InterruptedException e) {
                         }

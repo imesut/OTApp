@@ -15,6 +15,8 @@ public class PseudoSDK {
     public static int SERVER_VERSION;
     public static boolean forced = false;
 
+    public static boolean connected = false;
+
     public static boolean progress(int randomInt, int progress){
         return !(randomInt == progress);
     }
@@ -26,6 +28,9 @@ public class PseudoSDK {
         }
         // Forced Update
         else if(forced){
+            if(SERVER_VERSION==LOCAL_VERSION){
+                return -1;
+            }
             return 0;
         }
         // No update

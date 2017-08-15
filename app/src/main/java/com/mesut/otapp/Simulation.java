@@ -14,8 +14,8 @@ public class Simulation extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_simulation);
-        Switch connected = (Switch)findViewById(R.id.connected);
-        Switch forced = (Switch)findViewById(R.id.forced);
+        final Switch connected = (Switch)findViewById(R.id.connected);
+        final Switch forced = (Switch)findViewById(R.id.forced);
         final EditText serverVersion = (EditText)findViewById(R.id.serverVersion);
         EditText timeoutPrb = (EditText)findViewById(R.id.timeoutPrb);
         EditText hashPrb = (EditText)findViewById(R.id.hashPrb);
@@ -24,12 +24,15 @@ public class Simulation extends AppCompatActivity {
         Button submit = (Button)findViewById(R.id.submit);
 
         serverVersion.setText(String.valueOf(PseudoSDK.SERVER_VERSION));
+        forced.setChecked(PseudoSDK.forced);
+        connected.setChecked(PseudoSDK.connected);
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                PseudoSDK.forced = forced.isChecked();
+                PseudoSDK.connected = connected.isChecked();
                 PseudoSDK.SERVER_VERSION = Integer.parseInt(serverVersion.getText().toString());
-                PseudoSDK.LOCAL_VERSION = PseudoSDK.LOCAL_VERSION;
                 Intent intent = new Intent(Simulation.this, Management.class);
                 startActivity(intent);
                 finish();

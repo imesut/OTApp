@@ -20,39 +20,43 @@ public class Management extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_management);
 
-        // Visual Item Parameters
-        updateButton = (Button) findViewById(R.id.updateButton);
-        updateInfoText = (TextView) findViewById(R.id.updateInfoText);
-        updateInfoText.setText("WeWALK Cihazınızın Yazılım Sürümü: v" + String.valueOf(PseudoSDK.LOCAL_VERSION));
+        if (PseudoSDK.connected) {
+            setContentView(R.layout.activity_management_connected);
+            // Visual Item Parameters
+            updateButton = (Button) findViewById(R.id.updateButton);
+            updateInfoText = (TextView) findViewById(R.id.updateInfoText);
+            updateInfoText.setText("WeWALK Cihazınızın Yazılım Sürümü: v" + String.valueOf(PseudoSDK.LOCAL_VERSION));
 
-        if (PseudoSDK.check_for_update() != -1) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage("WeWALK cihazı yazılımı güncellemesi bulundu.").setTitle("Güncelleme Bulundu...");
-            builder.setPositiveButton("Yükleyelim", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int id) {
-                    Intent intent = new Intent(Management.this, Update.class);
-                    startActivity(intent);
-                    overridePendingTransition(0, 0);
-                    finish();
-                }
-            });
-
-            builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int id) {
-                    updateButton.setVisibility(View.VISIBLE);
-                    if (PseudoSDK.check_for_update() > 0) {
-                        updateInfoText.setText("WeWALK cihaz yazılımınız için yeni güncelleme(Sürüm: " + String.valueOf(PseudoSDK.check_for_update()) + ") bulundu.");
-                    } else if (PseudoSDK.check_for_update() == 0) {
-                        updateInfoText.setText("WeWALK cihaz yazılımınız için güncelleme Bulundu.");
+            if (PseudoSDK.check_for_update() != -1) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setMessage("WeWALK cihazı yazılımı güncellemesi bulundu.").setTitle("Güncelleme Bulundu...");
+                builder.setPositiveButton("Yükleyelim", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Intent intent = new Intent(Management.this, Update.class);
+                        startActivity(intent);
+                        overridePendingTransition(0, 0);
+                        finish();
                     }
-                }
-            });
-            final AlertDialog dialog = builder.create();
-            dialog.show();
-        } else {
-            updateInfoText.setText("WeWALK cihazınız yazılımınız (v" + String.valueOf(PseudoSDK.LOCAL_VERSION) + ") güncel.");
+                });
+
+                builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        updateButton.setVisibility(View.VISIBLE);
+                        if (PseudoSDK.check_for_update() > 0) {
+                            updateInfoText.setText("WeWALK cihaz yazılımınız için yeni güncelleme(Sürüm: " + String.valueOf(PseudoSDK.check_for_update()) + ") bulundu.");
+                        } else if (PseudoSDK.check_for_update() == 0) {
+                            updateInfoText.setText("WeWALK cihaz yazılımınız için güncelleme Bulundu.");
+                        }
+                    }
+                });
+                final AlertDialog dialog = builder.create();
+                dialog.show();
+            } else {
+                updateInfoText.setText("WeWALK cihazınız yazılımınız (v" + String.valueOf(PseudoSDK.LOCAL_VERSION) + ") güncel.");
+            }
+        }else{
+            setContentView(R.layout.activity_management_unconnected);
         }
     }
 
