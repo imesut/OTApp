@@ -19,7 +19,7 @@ public class PseudoSDK {
 
     public static int timeoutPrb = 5;
     public static int hashPrb = 5;
-    public static int reconnect = 5;
+    public static int reconnectPrb = 5;
     public static int updateFailPrb = 5;
 
     public static boolean progress(int randomInt, int progress){

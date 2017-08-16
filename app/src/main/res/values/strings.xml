@@ -4,12 +4,19 @@
     <string name="dialog_title">Başlık</string>
     <string name="dialog_message">Mesaj</string>
     <string name="cancel">İptal</string>
+    <string name="error">Hata</string>
+    <string name="timeoutError">"Güncellemenin WeWALK'a iletilmesi sırasında hata oluştu."</string>
     <string name="updateState1">"1. Güncelleme İndiriliyor."</string>
     <string name="updateState2">"2. İndirilen Güncelleme Doğrulanıyor."</string>
     <string name="updateState3">"3. İndirilen Güncelleme Doğrulandı."</string>
-    <string name="updateState3fail">"3. İndirilen Güncelleme Doğrulanamadı."</string>
+    <string name="updateState3fail">"İndirilen Güncelleme Doğrulanamadı."</string>
     <string name="updateState4">"4. Güncelleme WeWALK'a iletiliyor."</string>
     <string name="updateState5">"5. Güncelleme uygulanıyor."</string>
     <string name="updateState6">"6. WeWALK'un yeniden başlaması bekleniyor."</string>
-    <string name="updateState7">"7. Yüklenen Güncelleme Doğrulanıyor."</string>
+    <string name="updateState7">"7. WeWALK'un bağlandı."</string>
+    <string name="updateState7fail">"WeWALK yeniden bağlanamadı. WeWALK'unuz açıldıysa, lütfen telefonla eşleştiriniz..."</string>
+    <string name="updateState8">"8. Yüklenen Güncelleme Doğrulanıyor..."</string>
+    <string name="updateState8fail">"WeWALK'unuza yüklenen güncelleme doğrulanamadı."</string>
+    <string name="updateSuccess">"WeWALK'unuza yüklenen güncelleme doğrulanamadı."</string>
+    <string name="updateSuccessMessage">"WeWALK yazılım güncellemesi başarıyla gerçekleştirildi."</string>
 </resources>

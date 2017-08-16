@@ -3,7 +3,6 @@ package com.mesut.otapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,7 +18,7 @@ public class Simulation extends AppCompatActivity {
         final EditText serverVersion = (EditText)findViewById(R.id.serverVersion);
         final EditText timeoutPrb = (EditText)findViewById(R.id.timeoutPrb);
         final EditText hashPrb = (EditText)findViewById(R.id.hashPrb);
-        final EditText reconnect = (EditText)findViewById(R.id.reconnect);
+        final EditText reconnectPrb = (EditText)findViewById(R.id.reconnect);
         final EditText updateFailPrb = (EditText)findViewById(R.id.updateFailPrb);
         Button submit = (Button)findViewById(R.id.submit);
 
@@ -28,7 +27,7 @@ public class Simulation extends AppCompatActivity {
         serverVersion.setText(String.valueOf(PseudoSDK.SERVER_VERSION));
         timeoutPrb.setText(String.valueOf(PseudoSDK.timeoutPrb));
         hashPrb.setText(String.valueOf(PseudoSDK.hashPrb));
-        reconnect.setText(String.valueOf(PseudoSDK.reconnect));
+        reconnectPrb.setText(String.valueOf(PseudoSDK.reconnectPrb));
         updateFailPrb.setText(String.valueOf(PseudoSDK.updateFailPrb));
 
         submit.setOnClickListener(new View.OnClickListener() {
@@ -39,7 +38,7 @@ public class Simulation extends AppCompatActivity {
                 PseudoSDK.SERVER_VERSION = Integer.parseInt(serverVersion.getText().toString());
                 PseudoSDK.timeoutPrb = Integer.parseInt(timeoutPrb.getText().toString());
                 PseudoSDK.hashPrb = Integer.parseInt(hashPrb.getText().toString());
-                PseudoSDK.reconnect = Integer.parseInt(reconnect.getText().toString());
+                PseudoSDK.reconnectPrb = Integer.parseInt(reconnectPrb.getText().toString());
                 PseudoSDK.updateFailPrb = Integer.parseInt(updateFailPrb.getText().toString());
                 Intent intent = new Intent(Simulation.this, Management.class);
                 startActivity(intent);
