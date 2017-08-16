@@ -4,12 +4,12 @@
     <string name="dialog_title">Başlık</string>
     <string name="dialog_message">Mesaj</string>
     <string name="cancel">İptal</string>
-    <string name="updateState1">"Güncelleme İndiriliyor."</string>
-    <string name="updateState2">"İndirilen Güncelleme Doğrulanıyor."</string>
-    <string name="updateState3">"İndirilen Güncelleme Doğrulandı."</string>
-    <string name="updateState3fail">"İndirilen Güncelleme Doğrulanamadı."</string>
-    <string name="updateState4">"Güncelleme WeWALK'a iletiliyor."</string>
-    <string name="updateState5">"Güncelleme uygulanıyor."</string>
-    <string name="updateState6">"WeWALK'un yeniden başlaması bekleniyor."</string>
-    <string name="updateState7">"Yüklenen Güncelleme Doğrulanıyor."</string>
+    <string name="updateState1">"1. Güncelleme İndiriliyor."</string>
+    <string name="updateState2">"2. İndirilen Güncelleme Doğrulanıyor."</string>
+    <string name="updateState3">"3. İndirilen Güncelleme Doğrulandı."</string>
+    <string name="updateState3fail">"3. İndirilen Güncelleme Doğrulanamadı."</string>
+    <string name="updateState4">"4. Güncelleme WeWALK'a iletiliyor."</string>
+    <string name="updateState5">"5. Güncelleme uygulanıyor."</string>
+    <string name="updateState6">"6. WeWALK'un yeniden başlaması bekleniyor."</string>
+    <string name="updateState7">"7. Yüklenen Güncelleme Doğrulanıyor."</string>
 </resources>

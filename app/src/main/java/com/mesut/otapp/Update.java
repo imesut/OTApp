@@ -14,15 +14,48 @@ import java.util.concurrent.TimeUnit;
 public class Update extends AppCompatActivity {
     int i = 1;
     boolean phase = true;
+    public boolean waitForProcess = false;
+    public int sleepDuration = 1000;
     public boolean stop = false;
 
-    public int update_wait(int i){
-        int sleep = 500;
-        return sleep;
-    }
+    public void update_wait(int fn, TextView textview, Thread counter){
+        switch (fn){
+            case 1:
+                //Download update
+                textview.setText(R.string.updateState1);
+                //Log.d("status", "yazı1");
+                sleepDuration = 3000;
+                break;
+            case 2:
+                textview.setText(R.string.updateState2);
+                //Log.d("status", "yazı2");
+                sleepDuration = 2000;
+                break;
+            case 3:
+                int rnd = (int)(100 * Math.random());
+                if (rnd < PseudoSDK.hashPrb){
+                    textview.setText(R.string.updateState3fail);
+                }
+                //Check success message
+                else {
+                    textview.setText(R.string.updateState3);
+                }
+                break;
+            case 4:
+                //Start Transmission
+                textview.setText(R.string.updateState4);
+                waitForProcess = true;
+                counter.start();
+                break;
+            case 5:
+                counter.interrupt();
+                textview.setText(R.string.updateState5);
+                break;
+            default:
+                textview.setText("Default of Case");
+                sleepDuration = 1000;
+        }
 
-    public void update_step(int i){
-        //If logics
     }
 
     @Override
@@ -70,7 +103,10 @@ public class Update extends AppCompatActivity {
             public void run() {
                 try {
                     final PseudoSDK anObj = new PseudoSDK(0);
+                    anObj.progress = 0;
                     while (!Thread.currentThread().isInterrupted() && anObj.progress <= randomBreakpoint) {
+                        Log.d("running", "thread running");
+                        Log.d("iterasyon", String.valueOf(anObj.progress));
                         Thread.sleep(50);
                         runOnUiThread(new Runnable() {
                             @Override
@@ -82,10 +118,11 @@ public class Update extends AppCompatActivity {
                                 else {
                                     if (error == 0){
                                         progressPercentage.setText("Başarıyla iletildi");
-                                        dialog.setMessage("Güncelleme Tamamlandı.");
-                                        dialog.show();
+                                        //dialog.setMessage("Güncelleme Tamamlandı.");
+                                        //dialog.show();
                                         PseudoSDK.LOCAL_VERSION = PseudoSDK.SERVER_VERSION;
                                         stop = true;
+                                        waitForProcess = false;
                                     }
                                     else{
                                         progressPercentage.setText("%"+anObj.progress+" Hata: "+String.valueOf(error));
@@ -106,52 +143,33 @@ public class Update extends AppCompatActivity {
             @Override
             public void run() {
                 try {
+                    i=1;
                     while (phase) {
-                        Thread.sleep(0);
+                        //Log.d("waitforprocess", String.valueOf(waitForProcess));
+                        //Log.d("i", String.valueOf(i));
+                        if(waitForProcess){
+                            Thread.sleep(20);
+                        }
+                        else {
+                            Thread.sleep(sleepDuration);
+                        }
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                //Download update
-                                stepInfo.setText(R.string.updateState1);
-                                Log.d("status", "yazı1");
-                                //Wait for download
-                                try {
-                                    Thread.sleep(800);
-                                }catch (InterruptedException e){}
-                                //show hash check message
-                                Log.d("status", "sleep1");
-                                stepInfo.setText(R.string.updateState2);
-                                Log.d("status", "yazı2");
-                                //Wait for hash check
-                                try {
-                                    Thread.sleep(400);
-                                }catch (InterruptedException e){}
-                                Log.d("status", "sleep2");
-                                //Check fail message
-                                int rnd = (int)(100 * Math.random());
-                                if (rnd < PseudoSDK.hashPrb){
-                                    stepInfo.setText(R.string.updateState3fail);
+                                if(!waitForProcess) {
+                                    //Log.d("sleepDuration", String.valueOf(sleepDuration));
+                                    update_wait(i, stepInfo, t);
+                                    //Log.d("Run", String.valueOf(i));
+                                    i++;
+                                    if (i == 6) {
+                                        i = 1;
+                                    }
                                 }
-                                //Check success message
-                                else{
-                                    Log.d("status", "check");
-                                    stepInfo.setText(R.string.updateState3);
-                                    Log.d("status", "yazı3");
-                                    try {
-                                        Thread.sleep(200);
-                                    }catch (InterruptedException e){}
-                                    Log.d("status", "sleep3");
-                                    //Start Transmission
-                                    stepInfo.setText(R.string.updateState4);
-                                    Log.d("status", "yazı4");
-                                    t.start();
-                                    Log.d("status", "update başlangıcı");
-                                }
-                                phase = false;
-                                Log.d("scenario", "rnd: " + String.valueOf(rnd) + " hashPrb: " + String.valueOf(PseudoSDK.hashPrb) + String.valueOf(phase));
+                                //phase = false;
                             }
-                        });
-                        break;
+                            });
+
+                        //break
                     }
                 } catch (InterruptedException e) {
                 }

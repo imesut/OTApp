@@ -21,11 +21,12 @@
         android:id="@+id/connected"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/connectedText"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:layout_marginEnd="46dp"
         android:layout_marginRight="46dp"
-        android:layout_alignBottom="@+id/connectedText"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:checked="true" />
 
     <TextView
         android:id="@+id/serverVersionText"
@@ -65,7 +66,8 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/forcedText"
         android:layout_alignEnd="@+id/serverVersion"
-        android:layout_alignRight="@+id/serverVersion" />
+        android:layout_alignRight="@+id/serverVersion"
+        android:checked="true" />
 
     <TextView
         android:id="@+id/timeoutPrbText"
@@ -154,10 +156,10 @@
         android:id="@+id/submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/hashPrbText"
+        android:layout_marginBottom="18dp"
+        android:elevation="0dp"
+        android:text="ONAYLA"
         android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/hashPrbText"
-        android:layout_marginBottom="9dp"
-        android:text="ONAYLA" />
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

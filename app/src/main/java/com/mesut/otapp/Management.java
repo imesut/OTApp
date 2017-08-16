@@ -21,6 +21,9 @@ public class Management extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        PseudoSDK.connected = true;
+        PseudoSDK.forced = true;
+
         if (PseudoSDK.connected) {
             setContentView(R.layout.activity_management_connected);
             // Visual Item Parameters
