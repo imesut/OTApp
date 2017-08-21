@@ -12,13 +12,13 @@
         android:id="@+id/tips"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_above="@+id/plug"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="88dp"
-        android:text="Cihazınızın elektrik bağlantısını koparmayınız."
+        android:layout_marginBottom="23dp"
+        android:text="Lütfen, cihazınızın elektrik bağlantısını koparmayınız."
         android:textAlignment="center"
         android:textColor="#FF0000"
-        android:textStyle="bold" />
+        android:textStyle="italic" />
 
     <TextView
         android:id="@+id/progressPercentage"
@@ -26,9 +26,9 @@
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:textSize="50sp"
+        android:layout_marginBottom="30dp"
         android:layout_above="@+id/tips"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="55dp" />
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:id="@+id/stepInfo"
@@ -49,5 +49,30 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="17dp"
         app:srcCompat="@drawable/wewalklogo" />
+
+    <ImageView
+        android:id="@+id/plug"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@drawable/plug" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="61dp"
+        android:lineSpacingExtra="8sp"
+        android:text="GÜNCELLEME GERÇEKLEŞTİRİLİYOR"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="#FF050F50"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:typeface="normal" />
+
 
 </android.widget.RelativeLayout>

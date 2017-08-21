@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context="com.mesut.otapp.Management">
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="17dp"
+        app:srcCompat="@drawable/wewalklogo" />
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"

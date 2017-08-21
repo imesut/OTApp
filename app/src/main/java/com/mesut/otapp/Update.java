@@ -16,7 +16,7 @@ public class Update extends AppCompatActivity {
     int i = 1;
     int j = 0;
     public boolean waitForProcess = false;
-    public int sleepDuration = 1000;
+    public int sleepDuration = 7000;
     public boolean stop = false;
     public boolean error = false;
 
@@ -27,12 +27,12 @@ public class Update extends AppCompatActivity {
             case 1:
                 //Download update
                 textview.setText(R.string.updateState1);
-                sleepDuration = 3000;
+                sleepDuration = 10000;
                 break;
             case 2:
                 //Check the update(hash) text
                 textview.setText(R.string.updateState2);
-                sleepDuration = 1000;
+                sleepDuration = 3000;
                 break;
             case 3:
                 //Download check result
@@ -53,24 +53,24 @@ public class Update extends AppCompatActivity {
                 textview.setText(R.string.updateState4);
                 waitForProcess = true;
                 counter.start();
-                sleepDuration = 3000;
+                sleepDuration = 30000;
 
                 break;
             case 5:
                 //Applying Update
                 counter.interrupt();
                 textview.setText(R.string.updateState5);
-                sleepDuration = 6000;
+                sleepDuration = 20000;
                 break;
             case 6:
                 //Waiting for restart
                 textview.setText(R.string.updateState6);
                 progress.setVisibility(View.INVISIBLE);
-                sleepDuration = 4000;
+                sleepDuration = 40000;
                 break;
             case 7:
                 //WeWALK reconnected
-                sleepDuration = 1000;
+                sleepDuration = 10000;
                 if ((int)(100 * Math.random()) < PseudoSDK.reconnectPrb){
                     waitForProcess = true;
                     dialog.setMessage(getString(R.string.updateState7fail));
@@ -95,7 +95,6 @@ public class Update extends AppCompatActivity {
                 }
                 break;
         }
-
     }
 
     @Override
@@ -103,16 +102,15 @@ public class Update extends AppCompatActivity {
         super.onBackPressed();
         Intent intent = new Intent(Update.this, Management.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
-        overridePendingTransition(0, 0);
         this.finish();
+        overridePendingTransition(0, 0);
+        startActivity(intent);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update);
-
         Intent intent = getIntent();
 
         TextView tips = (TextView)findViewById(R.id.tips);
@@ -126,15 +124,15 @@ public class Update extends AppCompatActivity {
                 Thread.currentThread().interrupt();
                 Intent intent = new Intent(Update.this, Management.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
                 finish();
+                overridePendingTransition(0, 0);
+                startActivity(intent);
             }
         });
         final AlertDialog dialog = builder.create();
 
         //Dummy Progress
-        int rb = 100;
+        int rb = 101;
         if ((int)(100 * Math.random()) < PseudoSDK.timeoutPrb) {
             rb = (int) (100 * Math.random());
             error = false;
@@ -145,8 +143,8 @@ public class Update extends AppCompatActivity {
             public void run() {
                 try {
                     j = 0;
-                    while (!Thread.currentThread().isInterrupted() && j <= randomBreakpoint) {
-                        Thread.sleep(50);
+                    while (!Thread.currentThread().isInterrupted() && j < randomBreakpoint) {
+                        Thread.sleep((int)(400/(PseudoSDK.speedofTime+1)));
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
@@ -156,7 +154,6 @@ public class Update extends AppCompatActivity {
                                 }
                                 else {
                                     if (!error){
-                                        progressPercentage.setText("Güncelleme WeWALK'a Başarıyla iletildi");
                                         stop = true;
                                         waitForProcess = false;
                                     }
@@ -190,19 +187,18 @@ public class Update extends AppCompatActivity {
                         }
                         else {
                             sleepDuration = sleepDuration + (int)(200*Math.random());
-                            Thread.sleep(sleepDuration);
+                            Thread.sleep((int)(sleepDuration/(PseudoSDK.speedofTime+1)));
                         }
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
                                 if(!waitForProcess) {
                                     update_wait(i, stepInfo, t, builder, progressPercentage);
-                                    Log.d("local version", String.valueOf(PseudoSDK.LOCAL_VERSION));
                                     i++;
                                 }
                             }
                             });
-                        if (i == 9) {
+                        if (i == 9 && !error) {
                             PseudoSDK.LOCAL_VERSION = PseudoSDK.SERVER_VERSION;
                             break;
                         }

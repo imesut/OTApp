@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">OTApp</string>
+    <string name="cancel">Cancel</string>
+    <string name="dialog_message">Message</string>
+    <string name="dialog_title">Title</string>
+    <string name="error">Error</string>
+    <string name="ok">Okay</string>
+    <string name="timeoutError">\"Error during the transmission of update to WeWALK\"</string>
+    <string name="updateState1">1. Update is downloading.</string>
+    <string name="updateState2">2. Downloaded update is verifying.</string>
+    <string name="updateState3">3. Downloaded update is verified.</string>
+    <string name="updateState3fail">Downloaded Update couldn\'t verified.</string>
+    <string name="updateState4">4. Update is sending to WeWALK.</string>
+    <string name="updateState5">5. Update is being applied.</string>
+    <string name="updateState6">6. Waiting for the restart of WeWALK.</string>
+    <string name="updateState7">7. WeWALK is connected.</string>
+    <string name="updateState7fail">WeWALK couldn\'t reconnected. If your WeWALK has opened, please pair with this phone.</string>
+    <string name="updateState8">8. Installed update is being validated.</string>
+    <string name="updateState8fail">Installed update to your WeWALK, couldn\'t validated.</string>
+    <string name="updateSuccess">Installed update to your WeWALK, has validated.</string>
+    <string name="updateSuccessMessage">WeWALK firmware update has completed in success.</string>
+</resources>

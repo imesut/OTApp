@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">OTApp</string>
+    <string name="app_name" translatable="false">OTApp</string>
     <string name="ok">Tamamdır</string>
     <string name="dialog_title">Başlık</string>
     <string name="dialog_message">Mesaj</string>
@@ -13,10 +13,10 @@
     <string name="updateState4">"4. Güncelleme WeWALK'a iletiliyor."</string>
     <string name="updateState5">"5. Güncelleme uygulanıyor."</string>
     <string name="updateState6">"6. WeWALK'un yeniden başlaması bekleniyor."</string>
-    <string name="updateState7">"7. WeWALK'un bağlandı."</string>
+    <string name="updateState7">"7. WeWALK bağlandı."</string>
     <string name="updateState7fail">"WeWALK yeniden bağlanamadı. WeWALK'unuz açıldıysa, lütfen telefonla eşleştiriniz..."</string>
     <string name="updateState8">"8. Yüklenen Güncelleme Doğrulanıyor..."</string>
     <string name="updateState8fail">"WeWALK'unuza yüklenen güncelleme doğrulanamadı."</string>
-    <string name="updateSuccess">"WeWALK'unuza yüklenen güncelleme doğrulanamadı."</string>
+    <string name="updateSuccess">\"WeWALK\'unuza yüklenen güncelleme doğrulandı.\"</string>
     <string name="updateSuccessMessage">"WeWALK yazılım güncellemesi başarıyla gerçekleştirildi."</string>
 </resources>

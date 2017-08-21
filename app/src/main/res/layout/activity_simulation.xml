@@ -9,13 +9,14 @@
         android:id="@+id/connectedText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="49dp"
-        android:layout_marginStart="49dp"
-        android:layout_marginTop="49dp"
-        android:text="WeWALK connected?"
-        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="21dp"
+        android:text="WeWALK connected?"
+        android:textStyle="bold" />
 
     <Switch
         android:id="@+id/connected"
@@ -32,11 +33,12 @@
         android:id="@+id/serverVersionText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="SERVER_VERSION"
-        android:layout_below="@+id/connectedText"
         android:layout_alignLeft="@+id/connectedText"
-        android:layout_alignStart="@+id/connectedText" />
+        android:layout_alignStart="@+id/connectedText"
+        android:layout_below="@+id/connectedText"
+        android:layout_marginTop="22dp"
+        android:text="SERVER_VERSION"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/serverVersion"
@@ -54,11 +56,12 @@
         android:id="@+id/forcedText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="SERVER_VERSION forced?"
-        android:layout_below="@+id/serverVersionText"
         android:layout_alignLeft="@+id/serverVersionText"
-        android:layout_alignStart="@+id/serverVersionText" />
+        android:layout_alignStart="@+id/serverVersionText"
+        android:layout_below="@+id/serverVersion"
+        android:layout_marginTop="18dp"
+        android:text="SERVER_VERSION forced?"
+        android:textStyle="bold" />
 
     <Switch
         android:id="@+id/forced"
@@ -73,10 +76,11 @@
         android:id="@+id/timeoutPrbText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Timeout Probability %"
-        android:layout_centerVertical="true"
         android:layout_alignLeft="@+id/forcedText"
-        android:layout_alignStart="@+id/forcedText" />
+        android:layout_alignStart="@+id/forcedText"
+        android:layout_centerVertical="true"
+        android:text="Timeout Probability %"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/timeoutPrb"
@@ -93,11 +97,12 @@
         android:id="@+id/hashPrbText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hash Unmatch Probability %"
-        android:layout_marginTop="35dp"
-        android:layout_below="@+id/timeoutPrbText"
         android:layout_alignLeft="@+id/timeoutPrbText"
-        android:layout_alignStart="@+id/timeoutPrbText" />
+        android:layout_alignStart="@+id/timeoutPrbText"
+        android:layout_below="@+id/timeoutPrbText"
+        android:layout_marginTop="35dp"
+        android:text="Hash Unmatch Probability %"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/hashPrb"
@@ -114,11 +119,12 @@
         android:id="@+id/reconnectPrbText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Reconnect Fail Probability %"
-        android:layout_marginTop="35dp"
-        android:layout_below="@+id/hashPrbText"
         android:layout_alignLeft="@+id/hashPrbText"
-        android:layout_alignStart="@+id/hashPrbText" />
+        android:layout_alignStart="@+id/hashPrbText"
+        android:layout_below="@+id/hashPrbText"
+        android:layout_marginTop="35dp"
+        android:text="Reconnect Fail Probability %"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/reconnect"
@@ -135,11 +141,12 @@
         android:id="@+id/updateFailPrbText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Update Fail Probability %"
-        android:layout_marginTop="35dp"
-        android:layout_below="@+id/reconnectPrbText"
         android:layout_alignLeft="@+id/reconnectPrbText"
-        android:layout_alignStart="@+id/reconnectPrbText" />
+        android:layout_alignStart="@+id/reconnectPrbText"
+        android:layout_below="@+id/reconnectPrbText"
+        android:layout_marginTop="35dp"
+        android:text="Update Fail Probability %"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/updateFailPrb"
@@ -161,5 +168,39 @@
         android:text="ONAYLA"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
+
+    <SeekBar
+        android:id="@+id/speedofTimeSeekBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/forced"
+        android:layout_alignRight="@+id/forced"
+        android:layout_below="@+id/forcedText"
+        android:layout_marginTop="23dp"
+        android:layout_toEndOf="@+id/timeoutPrbText"
+        android:layout_toRightOf="@+id/timeoutPrbText"
+        android:max="19"
+        android:progress="@android:integer/config_shortAnimTime" />
+
+    <TextView
+        android:id="@+id/speedofTimeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/speedofTimeSeekBar"
+        android:layout_alignLeft="@+id/forcedText"
+        android:layout_alignStart="@+id/forcedText"
+        android:text="Speed of Time"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/speedofTimeRatioText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" 1/1"
+        android:textAlignment="viewStart"
+        android:layout_alignBaseline="@+id/speedofTimeText"
+        android:layout_alignBottom="@+id/speedofTimeText"
+        android:layout_alignLeft="@+id/submit"
+        android:layout_alignStart="@+id/submit" />
 
 </RelativeLayout>

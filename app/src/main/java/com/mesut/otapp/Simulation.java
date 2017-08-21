@@ -3,10 +3,13 @@ package com.mesut.otapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.SeekBar;
 import android.widget.Switch;
+import android.widget.TextView;
 
 public class Simulation extends AppCompatActivity {
     @Override
@@ -30,6 +33,8 @@ public class Simulation extends AppCompatActivity {
         final EditText hashPrb = (EditText)findViewById(R.id.hashPrb);
         final EditText reconnectPrb = (EditText)findViewById(R.id.reconnect);
         final EditText updateFailPrb = (EditText)findViewById(R.id.updateFailPrb);
+        final SeekBar speedOfTime = (SeekBar)findViewById(R.id.speedofTimeSeekBar);
+        final TextView speedofTimeRatio = (TextView)findViewById(R.id.speedofTimeRatioText);
         Button submit = (Button)findViewById(R.id.submit);
 
         forced.setChecked(PseudoSDK.forced);
@@ -39,6 +44,24 @@ public class Simulation extends AppCompatActivity {
         hashPrb.setText(String.valueOf(PseudoSDK.hashPrb));
         reconnectPrb.setText(String.valueOf(PseudoSDK.reconnectPrb));
         updateFailPrb.setText(String.valueOf(PseudoSDK.updateFailPrb));
+        speedOfTime.setProgress(PseudoSDK.speedofTime);
+
+        speedOfTime.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                speedofTimeRatio.setText("1/"+String.valueOf(i+1));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,6 +73,7 @@ public class Simulation extends AppCompatActivity {
                 PseudoSDK.hashPrb = Integer.parseInt(hashPrb.getText().toString());
                 PseudoSDK.reconnectPrb = Integer.parseInt(reconnectPrb.getText().toString());
                 PseudoSDK.updateFailPrb = Integer.parseInt(updateFailPrb.getText().toString());
+                PseudoSDK.speedofTime = speedOfTime.getProgress();
                 Intent intent = new Intent(Simulation.this, Management.class);
                 startActivity(intent);
                 finish();
