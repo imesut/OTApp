@@ -23,9 +23,10 @@ public class Management extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //Test Initializations for speed up
+        //Test Initialization for speed up
         PseudoSDK.connected = true;
         PseudoSDK.forced = true;
+        PseudoSDK.speedofTime = 10;
 
 
         if (PseudoSDK.connected) {
@@ -33,12 +34,12 @@ public class Management extends AppCompatActivity {
             // Visual Item Parameters
             updateButton = (Button) findViewById(R.id.updateButton);
             updateInfoText = (TextView) findViewById(R.id.updateInfoText);
-            updateInfoText.setText("WeWALK Cihazınızın Yazılım Sürümü: v" + String.valueOf(PseudoSDK.LOCAL_VERSION));
+            updateInfoText.setText(getString(R.string.currentVersion) + String.valueOf(PseudoSDK.LOCAL_VERSION));
 
             if (PseudoSDK.check_for_update() != -1) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setMessage("WeWALK cihazı yazılımı güncellemesi bulundu.").setTitle("Güncelleme Bulundu...");
-                builder.setPositiveButton("Yükleyelim", new DialogInterface.OnClickListener() {
+                builder.setMessage(getString(R.string.newUpdateFound)).setTitle(getString(R.string.newUpdateFoundTitle));
+                builder.setPositiveButton(R.string.letsInstall, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         Intent intent = new Intent(Management.this, Update.class);
                         startActivity(intent);
@@ -51,16 +52,16 @@ public class Management extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int id) {
                         updateButton.setVisibility(View.VISIBLE);
                         if (PseudoSDK.check_for_update() > 0) {
-                            updateInfoText.setText("WeWALK cihaz yazılımınız için yeni güncelleme(Sürüm: " + String.valueOf(PseudoSDK.check_for_update()) + ") bulundu.");
+                            updateInfoText.setText(R.string.newUpdateFound1 + String.valueOf(PseudoSDK.check_for_update()) + R.string.newUpdateFound2);
                         } else if (PseudoSDK.check_for_update() == 0) {
-                            updateInfoText.setText("WeWALK cihaz yazılımınız için güncelleme Bulundu.");
+                            updateInfoText.setText(R.string.newUpdateFound);
                         }
                     }
                 });
                 final AlertDialog dialog = builder.create();
                 dialog.show();
             } else {
-                updateInfoText.setText("WeWALK cihazınız yazılımınız (v" + String.valueOf(PseudoSDK.LOCAL_VERSION) + ") güncel.");
+                updateInfoText.setText(getString(R.string.noNewUpdate1) + String.valueOf(PseudoSDK.LOCAL_VERSION) + getString(R.string.noNewUpdate2));
             }
         }else{
             setContentView(R.layout.activity_management_unconnected);

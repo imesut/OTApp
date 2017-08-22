@@ -20,12 +20,11 @@
         <activity
             android:name=".Update"
             android:screenOrientation="portrait"
-            android:label="WeWALK Güncelleme"/>
+            android:label="@string/updateActivityTitle"/>
         <activity
             android:name=".Simulation"
-            android:parentActivityName=".Management"
             android:screenOrientation="portrait"
-            android:label="OTApp - Simülasyon"/>
+            android:label="@string/simulationActivityTitle"/>
     </application>
 
 </manifest>

@@ -15,7 +15,7 @@
         android:layout_marginLeft="50dp"
         android:layout_marginStart="50dp"
         android:layout_marginTop="21dp"
-        android:text="WeWALK connected?"
+        android:text="@string/simConnected"
         android:textStyle="bold" />
 
     <Switch
@@ -37,7 +37,7 @@
         android:layout_alignStart="@+id/connectedText"
         android:layout_below="@+id/connectedText"
         android:layout_marginTop="22dp"
-        android:text="SERVER_VERSION"
+        android:text="@string/simServerVersion"
         android:textStyle="bold" />
 
     <EditText
@@ -60,7 +60,7 @@
         android:layout_alignStart="@+id/serverVersionText"
         android:layout_below="@+id/serverVersion"
         android:layout_marginTop="18dp"
-        android:text="SERVER_VERSION forced?"
+        android:text="@string/simServerVersionForced"
         android:textStyle="bold" />
 
     <Switch
@@ -79,7 +79,7 @@
         android:layout_alignLeft="@+id/forcedText"
         android:layout_alignStart="@+id/forcedText"
         android:layout_centerVertical="true"
-        android:text="Timeout Probability %"
+        android:text="@string/simProbTimeout"
         android:textStyle="bold" />
 
     <EditText
@@ -101,7 +101,7 @@
         android:layout_alignStart="@+id/timeoutPrbText"
         android:layout_below="@+id/timeoutPrbText"
         android:layout_marginTop="35dp"
-        android:text="Hash Unmatch Probability %"
+        android:text="@string/simProbHash"
         android:textStyle="bold" />
 
     <EditText
@@ -123,7 +123,7 @@
         android:layout_alignStart="@+id/hashPrbText"
         android:layout_below="@+id/hashPrbText"
         android:layout_marginTop="35dp"
-        android:text="Reconnect Fail Probability %"
+        android:text="@string/simProbReconnect"
         android:textStyle="bold" />
 
     <EditText
@@ -145,7 +145,7 @@
         android:layout_alignStart="@+id/reconnectPrbText"
         android:layout_below="@+id/reconnectPrbText"
         android:layout_marginTop="35dp"
-        android:text="Update Fail Probability %"
+        android:text="@string/simProbFail"
         android:textStyle="bold" />
 
     <EditText
@@ -165,7 +165,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="18dp"
         android:elevation="0dp"
-        android:text="ONAYLA"
+        android:text="@string/confirm"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
@@ -189,7 +189,7 @@
         android:layout_alignBottom="@+id/speedofTimeSeekBar"
         android:layout_alignLeft="@+id/forcedText"
         android:layout_alignStart="@+id/forcedText"
-        android:text="Speed of Time"
+        android:text="@string/speedoftime"
         android:textStyle="bold" />
 
     <TextView

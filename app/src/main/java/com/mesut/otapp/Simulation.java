@@ -45,6 +45,7 @@ public class Simulation extends AppCompatActivity {
         reconnectPrb.setText(String.valueOf(PseudoSDK.reconnectPrb));
         updateFailPrb.setText(String.valueOf(PseudoSDK.updateFailPrb));
         speedOfTime.setProgress(PseudoSDK.speedofTime);
+        speedofTimeRatio.setText("1/"+String.valueOf(PseudoSDK.speedofTime+1));
 
         speedOfTime.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override

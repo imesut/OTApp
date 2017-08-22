@@ -22,16 +22,16 @@ public class Update extends AppCompatActivity {
 
     public void update_wait(int fn, TextView textview, Thread counter, Builder builder, TextView progress){
         AlertDialog dialog = builder.create();
-        dialog.setTitle(R.string.error);
+        dialog.setTitle(getString(R.string.error));
         switch (fn){
             case 1:
                 //Download update
-                textview.setText(R.string.updateState1);
+                textview.setText(getString(R.string.updateState1));
                 sleepDuration = 10000;
                 break;
             case 2:
                 //Check the update(hash) text
-                textview.setText(R.string.updateState2);
+                textview.setText(getString(R.string.updateState2));
                 sleepDuration = 3000;
                 break;
             case 3:
@@ -45,12 +45,12 @@ public class Update extends AppCompatActivity {
                 }
                 //success message
                 else {
-                    textview.setText(R.string.updateState3);
+                    textview.setText(getString(R.string.updateState3));
                 }
                 break;
             case 4:
                 //Transmission Started
-                textview.setText(R.string.updateState4);
+                textview.setText(getString(R.string.updateState4));
                 waitForProcess = true;
                 counter.start();
                 sleepDuration = 30000;
@@ -59,12 +59,12 @@ public class Update extends AppCompatActivity {
             case 5:
                 //Applying Update
                 counter.interrupt();
-                textview.setText(R.string.updateState5);
+                textview.setText(getString(R.string.updateState5));
                 sleepDuration = 20000;
                 break;
             case 6:
                 //Waiting for restart
-                textview.setText(R.string.updateState6);
+                textview.setText(getString(R.string.updateState6));
                 progress.setVisibility(View.INVISIBLE);
                 sleepDuration = 40000;
                 break;
@@ -76,21 +76,21 @@ public class Update extends AppCompatActivity {
                     dialog.setMessage(getString(R.string.updateState7fail));
                     dialog.show();
                 }
-                textview.setText(R.string.updateState7);
+                textview.setText(getString(R.string.updateState7));
                 break;
             case 8:
                 //Checking Installed Update
                 if ((int)(100 * Math.random()) < PseudoSDK.updateFailPrb){
-                    textview.setText(R.string.updateState8fail);
+                    textview.setText(getString(R.string.updateState8fail));
                     dialog.setMessage(getString(R.string.updateState8fail));
                     dialog.setTitle(R.string.error);
                     dialog.show();
                     error = true;
                 }
                 else{
-                    textview.setText(R.string.updateState8);
-                    dialog.setTitle("Güncelleme Tamamlandı.");
-                    dialog.setMessage("WeWALK'unuzu kullanmaya devam edebilirsiniz...");
+                    textview.setText(getString(R.string.updateState8));
+                    dialog.setTitle(getString(R.string.updateDoneSuccess));
+                    dialog.setMessage(getString(R.string.updateDoneSuccessMessage));
                     dialog.show();
                 }
                 break;
@@ -158,11 +158,12 @@ public class Update extends AppCompatActivity {
                                         waitForProcess = false;
                                     }
                                     else{
-                                        progressPercentage.setText("%"+j+" Hata: "+String.valueOf(error));
+                                        progressPercentage.setText("%"+String.valueOf(j)+" "+getString(R.string.error)+": "+String.valueOf(error));
                                         dialog.setMessage(getString(R.string.timeoutError));
-                                        dialog.setTitle(R.string.error);
+                                        dialog.setTitle(getString(R.string.error));
                                         dialog.show();
                                         stop = true;
+                                        error = true;
                                     }
                                 }
                             }
@@ -198,7 +199,7 @@ public class Update extends AppCompatActivity {
                                 }
                             }
                             });
-                        if (i == 9 && !error) {
+                        if (i == 9 || !error) {
                             PseudoSDK.LOCAL_VERSION = PseudoSDK.SERVER_VERSION;
                             break;
                         }
