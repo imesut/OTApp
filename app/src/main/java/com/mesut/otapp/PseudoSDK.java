@@ -2,7 +2,6 @@ package com.mesut.otapp;
 
 
 public class PseudoSDK {
-    // data member private yapılacak ve getter setter method yazılacak
     public  int progress;
 
     public PseudoSDK(){}
@@ -11,16 +10,16 @@ public class PseudoSDK {
         progress = i;
     }
 
-    public static int LOCAL_VERSION = 3;
+    public static int LOCAL_VERSION = 1;
     public static int SERVER_VERSION;
     public static boolean forced = false;
 
     public static boolean connected = false;
 
-    public static int timeoutPrb = 5;
-    public static int hashPrb = 5;
-    public static int reconnectPrb = 5;
-    public static int updateFailPrb = 5;
+    public static int timeoutPrb = 50;
+    public static int hashPrb = 50;
+    public static int reconnectPrb = 50;
+    public static int updateFailPrb = 50;
     public static int speedofTime = 1;
 
     public static boolean progress(int randomInt, int progress){

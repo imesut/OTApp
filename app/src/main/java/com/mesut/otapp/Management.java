@@ -64,7 +64,7 @@ public class Management extends AppCompatActivity {
                     public void onDismiss(DialogInterface dialogInterface) {
                         updateButton.setVisibility(View.VISIBLE);
                         if (PseudoSDK.check_for_update() > 0) {
-                            updateInfoText.setText(R.string.newUpdateFound1 + String.valueOf(PseudoSDK.check_for_update()) + R.string.newUpdateFound2);
+                            updateInfoText.setText(getString(R.string.newUpdateFound1) + String.valueOf(PseudoSDK.check_for_update()) + getString(R.string.newUpdateFound2));
                         } else if (PseudoSDK.check_for_update() == 0) {
                             updateInfoText.setText(R.string.newUpdateFound);
                         }

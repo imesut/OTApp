@@ -43,10 +43,10 @@
         <string name="simConnected">"WeWALK connected?"</string>
         <string name="simServerVersion">"SERVER_VERSION"</string>
         <string name="simServerVersionForced">"SERVER_VERSION forced?"</string>
-        <string name="simProbTimeout">"Timeout Probability %"</string>
-        <string name="simProbHash">"Hash Unmatch Probability %"</string>
-        <string name="simProbReconnect">"Reconnect Fail Probability %"</string>
-        <string name="simProbFail">"Update Fail Probability %"</string>
+        <string name="simProbTimeout">"Zamanaşımı Olasılığı %"</string>
+        <string name="simProbHash">"Hash Eşleşmeme Olasılığı %"</string>
+        <string name="simProbReconnect">"Yeniden Bağlanmama Olasılığı %"</string>
+        <string name="simProbFail">"Güncelleme Hata Olasılığı %"</string>
         <string name="confirm">"ONAYLA"</string>
-        <string name="speedoftime">"Speed of Time"</string>
+        <string name="speedoftime">"Zaman Hızı"</string>
 </resources>

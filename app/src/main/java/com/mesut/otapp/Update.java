@@ -138,7 +138,7 @@ public class Update extends AppCompatActivity {
             error = false;
         }
         final int randomBreakpoint = rb;
-        final Thread t = new Thread() {
+        final Thread transmission = new Thread() {
             @Override
             public void run() {
                 try {
@@ -194,7 +194,7 @@ public class Update extends AppCompatActivity {
                             @Override
                             public void run() {
                                 if(!waitForProcess) {
-                                    update_wait(i, stepInfo, t, builder, progressPercentage);
+                                    update_wait(i, stepInfo, transmission, builder, progressPercentage);
                                     i++;
                                 }
                             }
