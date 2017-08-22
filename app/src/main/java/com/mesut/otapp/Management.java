@@ -24,8 +24,8 @@ public class Management extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         //Test Initialization for speed up
-        //PseudoSDK.connected = true;
-        //PseudoSDK.forced = true;
+        PseudoSDK.connected = true;
+        PseudoSDK.forced = true;
         //PseudoSDK.speedofTime = 10;
 
 
@@ -58,6 +58,19 @@ public class Management extends AppCompatActivity {
                         }
                     }
                 });
+
+                builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                    @Override
+                    public void onDismiss(DialogInterface dialogInterface) {
+                        updateButton.setVisibility(View.VISIBLE);
+                        if (PseudoSDK.check_for_update() > 0) {
+                            updateInfoText.setText(R.string.newUpdateFound1 + String.valueOf(PseudoSDK.check_for_update()) + R.string.newUpdateFound2);
+                        } else if (PseudoSDK.check_for_update() == 0) {
+                            updateInfoText.setText(R.string.newUpdateFound);
+                        }
+                    }
+                });
+
                 final AlertDialog dialog = builder.create();
                 dialog.show();
             } else {
