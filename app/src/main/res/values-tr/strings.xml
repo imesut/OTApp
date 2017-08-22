@@ -18,7 +18,7 @@
         <string name="updateState7fail">"WeWALK yeniden bağlanamadı. WeWALK'unuz açıldıysa, lütfen telefonla eşleştiriniz&#8230;"</string>
         <string name="updateState8">"8. Yüklenen Güncelleme Doğrulanıyor&#8230;"</string>
         <string name="updateState8fail">"WeWALK'unuza yüklenen güncelleme doğrulanamadı."</string>
-        <string name="updateSuccess">\"WeWALK\'unuza yüklenen güncelleme doğrulandı.\"</string>
+        <string name="updateSuccess">"WeWALK'unuza yüklenen güncelleme doğrulandı."</string>
         <string name="updateSuccessMessage">"WeWALK yazılım güncellemesi başarıyla gerçekleştirildi."</string>
         <string name="simulationActivityTitle">"OTApp - Simülasyon"</string>
         <string name="updateActivityTitle">"WeWALK Güncelleme"</string>
@@ -30,7 +30,7 @@
         <string name="newUpdateFound2">") bulundu."</string>
         <string name="newUpdateFoundTitle">"Güncelleme Bulundu&#8230;"</string>
         <string name="letsInstall">"Yükleyelim"</string>
-        <string name="noNewUpdate1">\"WeWALK cihaz yazılımınız (v\"</string>
+        <string name="noNewUpdate1">"WeWALK cihaz yazılımınız (v"</string>
         <string name="noNewUpdate2">") güncel."</string>
         <string name="dummyUltrasoundSensor">"Ultrasonik Sensörü aç"</string>
         <string name="dummyImHere">"WeWALK'um Nerede?"</string>

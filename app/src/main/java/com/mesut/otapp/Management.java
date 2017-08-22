@@ -24,9 +24,9 @@ public class Management extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         //Test Initialization for speed up
-        PseudoSDK.connected = true;
-        PseudoSDK.forced = true;
-        PseudoSDK.speedofTime = 10;
+        //PseudoSDK.connected = true;
+        //PseudoSDK.forced = true;
+        //PseudoSDK.speedofTime = 10;
 
 
         if (PseudoSDK.connected) {

@@ -25,7 +25,7 @@
     <string name="deviceUnconnected">"WeWALK unconnected."</string>
     <string name="dummyFrontLed">Open the front led.</string>
     <string name="dummyImHere">"Where is my WeWALK?"</string>
-    <string name="dummyUltrasoundSensor">Open the ultrasound sensor</string>
+    <string name="dummyUltrasoundSensor">Open the ultrasound sensor.</string>
     <string name="letsInstall">Let\'s Install</string>
     <string name="newUpdateFound">WeWALK firmware update found.</string>
     <string name="newUpdateFound1">"WeWALK new firmware update is found (Version: "</string>

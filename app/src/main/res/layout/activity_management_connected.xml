@@ -21,25 +21,25 @@
         android:id="@+id/switch2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="21dp"
-        android:layout_marginStart="21dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="55dp"
         android:checked="true"
+        android:layout_marginRight="18dp"
+        android:layout_marginEnd="18dp"
         android:layout_below="@+id/imageView"
-        android:layout_toRightOf="@+id/textView2"
-        android:layout_toEndOf="@+id/textView2" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
         android:text="@string/dummyFrontLed"
+        android:textAlignment="viewEnd"
         android:textSize="24sp"
         android:layout_alignTop="@+id/switch2"
-        android:layout_alignLeft="@+id/updateButton"
-        android:layout_alignStart="@+id/updateButton"
-        android:layout_marginLeft="34dp"
-        android:layout_marginStart="34dp" />
+        android:layout_toLeftOf="@+id/switch1"
+        android:layout_toStartOf="@+id/switch1" />
 
     <TextView
         android:id="@+id/updateInfoText"
@@ -65,21 +65,24 @@
         android:id="@+id/switch1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
+        tools:checked="true"
+        android:layout_marginTop="45dp"
+        android:layout_below="@+id/textView2"
         android:layout_alignLeft="@+id/switch2"
-        android:layout_alignStart="@+id/switch2"
-        android:layout_alignTop="@+id/textView"
-        tools:checked="true" />
+        android:layout_alignStart="@+id/switch2" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
         android:text="@string/dummyUltrasoundSensor"
+        android:textAlignment="viewEnd"
         android:textSize="24sp"
-        android:layout_below="@+id/textView2"
+        android:layout_alignTop="@+id/switch1"
         android:layout_alignRight="@+id/textView2"
         android:layout_alignEnd="@+id/textView2" />
+
 
     <Button
         android:id="@+id/imhere"
