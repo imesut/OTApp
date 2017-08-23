@@ -51,24 +51,6 @@ public class Simulation extends AppCompatActivity {
         speedOfTime.setProgress(PseudoSDK.speedofTime);
         speedofTimeRatio.setText("1/"+String.valueOf(PseudoSDK.speedofTime+1));
 
-        speedOfTime.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                speedofTimeRatio.setText("1/"+String.valueOf(i+1));
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
-
-
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
