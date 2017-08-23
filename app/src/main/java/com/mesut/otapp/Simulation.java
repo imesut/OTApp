@@ -3,6 +3,8 @@ package com.mesut.otapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -10,6 +12,8 @@ import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
+
+import java.io.ObjectInputValidation;
 
 public class Simulation extends AppCompatActivity {
     @Override
@@ -64,16 +68,31 @@ public class Simulation extends AppCompatActivity {
             }
         });
 
+
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 PseudoSDK.forced = forced.isChecked();
                 PseudoSDK.connected = connected.isChecked();
-                PseudoSDK.SERVER_VERSION = Integer.parseInt(serverVersion.getText().toString());
-                PseudoSDK.timeoutPrb = Integer.parseInt(timeoutPrb.getText().toString());
-                PseudoSDK.hashPrb = Integer.parseInt(hashPrb.getText().toString());
-                PseudoSDK.reconnectPrb = Integer.parseInt(reconnectPrb.getText().toString());
-                PseudoSDK.updateFailPrb = Integer.parseInt(updateFailPrb.getText().toString());
+
+                String sv = serverVersion.getText().toString();
+                String to = timeoutPrb.getText().toString();
+                String hs = hashPrb.getText().toString();
+                String rc = reconnectPrb.getText().toString();
+                String uf = updateFailPrb.getText().toString();
+
+                //Set empty places to value zero
+                String[] editTexts = {sv, to, hs, rc, uf};
+                for (int k=0; k <= 4; k++){
+                    if (editTexts[k].equals("")){
+                        editTexts[k] = "0";
+                    }
+                }
+                PseudoSDK.SERVER_VERSION = Integer.parseInt(editTexts[0]);
+                PseudoSDK.timeoutPrb = Integer.parseInt(editTexts[1]);
+                PseudoSDK.hashPrb = Integer.parseInt(editTexts[2]);
+                PseudoSDK.reconnectPrb = Integer.parseInt(editTexts[3]);
+                PseudoSDK.updateFailPrb = Integer.parseInt(editTexts[4]);
                 PseudoSDK.speedofTime = speedOfTime.getProgress();
                 Intent intent = new Intent(Simulation.this, Management.class);
                 startActivity(intent);
