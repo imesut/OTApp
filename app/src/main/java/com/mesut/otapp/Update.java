@@ -153,18 +153,12 @@ public class Update extends AppCompatActivity {
                                     j++;
                                 }
                                 else {
-                                    if (!error){
-                                        stop = true;
-                                        waitForProcess = false;
-                                    }
-                                    else{
-                                        progressPercentage.setText("%"+String.valueOf(j)+" "+getString(R.string.error)+": "+String.valueOf(error));
-                                        dialog.setMessage(getString(R.string.timeoutError));
-                                        dialog.setTitle(R.string.error);
-                                        dialog.show();
-                                        stop = true;
-                                        error = true;
-                                    }
+                                    dialog.setMessage(getString(R.string.timeoutError));
+                                    dialog.setTitle(R.string.error);
+                                    dialog.show();
+                                    waitForProcess = true;
+                                    stop = true;
+                                    error = true;
                                 }
                             }
                         });

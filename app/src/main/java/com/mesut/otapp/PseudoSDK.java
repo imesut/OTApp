@@ -16,11 +16,11 @@ public class PseudoSDK {
 
     public static boolean connected = false;
 
-    public static int timeoutPrb = 50;
-    public static int hashPrb = 50;
-    public static int reconnectPrb = 50;
-    public static int updateFailPrb = 50;
-    public static int speedofTime = 1;
+    public static int timeoutPrb = 100;
+    public static int hashPrb = 0;
+    public static int reconnectPrb = 0;
+    public static int updateFailPrb = 0;
+    public static int speedofTime = 15;
 
     public static boolean progress(int randomInt, int progress){
         return !(randomInt == progress);
