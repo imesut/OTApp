@@ -16,7 +16,7 @@ public class PseudoSDK {
 
     public static boolean connected = false;
 
-    public static int timeoutPrb = 100;
+    public static int timeoutPrb = 0;
     public static int hashPrb = 0;
     public static int reconnectPrb = 0;
     public static int updateFailPrb = 0;

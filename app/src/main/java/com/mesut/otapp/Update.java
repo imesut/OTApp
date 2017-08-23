@@ -129,6 +129,17 @@ public class Update extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialogInterface) {
+                Thread.currentThread().interrupt();
+                Intent intent = new Intent(Update.this, Management.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                finish();
+                overridePendingTransition(0, 0);
+                startActivity(intent);
+            }
+        });
         final AlertDialog dialog = builder.create();
 
         //Dummy Progress
@@ -153,12 +164,19 @@ public class Update extends AppCompatActivity {
                                     j++;
                                 }
                                 else {
-                                    dialog.setMessage(getString(R.string.timeoutError));
-                                    dialog.setTitle(R.string.error);
-                                    dialog.show();
-                                    waitForProcess = true;
-                                    stop = true;
-                                    error = true;
+                                    if(j==101) {
+                                        waitForProcess = false;
+                                        stop = true;
+                                        error = false;
+                                    }
+                                    else{
+                                        dialog.setMessage(getString(R.string.timeoutError));
+                                        dialog.setTitle(R.string.error);
+                                        dialog.show();
+                                        waitForProcess = true;
+                                        stop = true;
+                                        error = true;
+                                    }
                                 }
                             }
                         });
